@@ -9,7 +9,7 @@ export default class Solution {
             .toString()
             .split("\n")
             .forEach(sor => {
-                const aktSor: string = sor.trim();
+                const aktSor: string = sor.trim(); // trim() -> vezérlő karakterek levágása
                 if (aktSor.length > 0) {
                     this.#utca.push(new Utca(aktSor));
                 }
