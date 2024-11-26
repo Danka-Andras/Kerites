@@ -26,7 +26,10 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     // Kezd a kódolást innen -->
     const su: Solution = new Solution("kerites.txt");
 
-    res.write(`2. feladat: Eladott telkek száma: ${su.SoldSiteCount}\n`);
+    res.write(`2. feladat: \n Az eladott telkek száma: ${su.SoldSiteCount}\n`);
+
+    const oneSiteNumber = su.oneSiteNumber;
+    res.write(`4. feladat: \n A szomszédossal egyezik a kerítés színe: ${oneSiteNumber}\n`);
     // <---- Fejezd be a kódolást
 
     res.write("</pre></form></body></html>");
