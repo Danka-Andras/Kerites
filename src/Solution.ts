@@ -4,6 +4,10 @@ import Utca from "./Utca";
 export default class Solution {
     #utca: Utca[] = [];
 
+    get SoldSiteCount(): number {
+        return this.#utca.length;
+    }
+
     constructor(forrás: string) {
         fs.readFileSync(forrás)
             .toString()
