@@ -14,7 +14,7 @@
         "compile:watch": "tsc --watch",
         "postinstall": "tsc",
         "kill": "taskkill /im node.exe /F",
-        "test": "jest || ECHO.",
+        "test": "jest --watchAll",
         "dev": "nodemon"
     },
     "author": "Nits László",
