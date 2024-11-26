@@ -26,11 +26,13 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
     // Kezd a kódolást innen -->
     const su: Solution = new Solution("kerites.txt");
 
-    res.write(`2. feladat: \n Az eladott telkek száma: ${su.SoldSiteCount}\n`);
+    res.write(`2. feladat: \n Az eladott telkek száma: ${su.SoldSiteCount}\n \n`);
+
+    res.write(`3. feladat: \n ${su.LastSoldSideSite} \n`);
 
     const oneSiteNumber = su.oneSiteNumber;
-    res.write(`4. feladat: \n A szomszédossal egyezik a kerítés színe: ${oneSiteNumber}\n`);
-    // <---- Fejezd be a kódolást
+
+    res.write(`4. feladat: \n A szomszédossal egyezik a kerítés színe: ${oneSiteNumber}\n \n`);
 
     res.write("</pre></form></body></html>");
     res.end();
