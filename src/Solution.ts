@@ -47,5 +47,3 @@ export default class Solution {
         });
     }
 }
-
-module.exports = Solution;
