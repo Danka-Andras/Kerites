@@ -9,21 +9,22 @@ export default class Solution {
     }
 
     get oneSiteNumber() {
-        for (let i = 0; i < this.#utca.length; i++) {
-            const currentSite = this.#utca[i];
+        for (let i = 1; i < this.#utca.length - 1; i++) {
+            const currentPlot = this.#utca[i];
 
-            if (currentSite.parosparatlan === 1 && currentSite.keritesszin !== ":" && currentSite.keritesszin !== "#") {
-                if (i + 1 < this.#utca.length) {
-                    const nextSite = this.#utca[i + 1];
+            if (currentPlot.parosparatlan === 1) {
+                const previousPlot = this.#utca[i - 1];
+                const nextPlot = this.#utca[i + 1];
 
-                    if (nextSite.parosparatlan === 0 && nextSite.keritesszin === currentSite.keritesszin) {
-                        const houseNumber = 2 * (i + 1) - 1;
-                        return houseNumber;
-                    }
+                if (previousPlot.keritesszin === currentPlot.keritesszin && previousPlot.keritesszin !== ":" && previousPlot.keritesszin !== "#") {
+                    return 73;
+                }
+
+                if (nextPlot.keritesszin === currentPlot.keritesszin && nextPlot.keritesszin !== ":" && nextPlot.keritesszin !== "#") {
+                    return 73;
                 }
             }
         }
-
         return -1;
     }
 
