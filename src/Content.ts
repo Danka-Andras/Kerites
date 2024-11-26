@@ -25,6 +25,8 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
 
     // Kezd a kódolást innen -->
     const su: Solution = new Solution("kerites.txt");
+
+    res.write(`2. feladat: Eladott telkek száma: ${su.SoldSiteCount}\n`);
     // <---- Fejezd be a kódolást
 
     res.write("</pre></form></body></html>");
