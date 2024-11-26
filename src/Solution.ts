@@ -8,45 +8,33 @@ export default class Solution {
         return this.#utca.length;
     }
 
+    get LastSoldSideSite() {
+        const lastSite = this.#utca[this.#utca.length - 1];
+        const side = lastSite.parosparatlan === 0 ? "páros" : "páratlan";
+        let houseNumber = 0;
+        if (lastSite.parosparatlan === 0) {
+            houseNumber = 2 * this.#utca.filter(site => site.parosparatlan === 0).length;
+        } else {
+            houseNumber = 2 * this.#utca.filter(site => site.parosparatlan === 1).length - 1;
+        }
+        return `A ${side} oldalon adták el az utolsó telket. \n Az utolsó telek házszáma: ${houseNumber} \n`;
+    }
+
     get oneSiteNumber() {
         for (let i = 1; i < this.#utca.length - 1; i++) {
             const currentPlot = this.#utca[i];
-
             if (currentPlot.parosparatlan === 1) {
                 const previousPlot = this.#utca[i - 1];
                 const nextPlot = this.#utca[i + 1];
-
                 if (previousPlot.keritesszin === currentPlot.keritesszin && previousPlot.keritesszin !== ":" && previousPlot.keritesszin !== "#") {
                     return 73;
                 }
-
                 if (nextPlot.keritesszin === currentPlot.keritesszin && nextPlot.keritesszin !== ":" && nextPlot.keritesszin !== "#") {
                     return 73;
                 }
             }
         }
         return -1;
-    }
-
-    get LastSoldSideSite() {
-        // Az utolsó eladott telek
-        const lastSite = this.#utca[this.#utca.length - 1];
-
-        // Oldal meghatározása (páros / páratlan)
-        const side = lastSite.parosparatlan === 0 ? "páros" : "páratlan";
-
-        // Házszám kiszámítása
-        let houseNumber = 0;
-        if (lastSite.parosparatlan === 0) {
-            // Páros oldalon: 2, 4, 6, ...
-            houseNumber = 2 * this.#utca.filter(site => site.parosparatlan === 0).length;
-        } else {
-            // Páratlan oldalon: 1, 3, 5, ...
-            houseNumber = 2 * this.#utca.filter(site => site.parosparatlan === 1).length - 1;
-        }
-
-        // Visszatérés a kívánt formátumban
-        return `A ${side} oldalon adták el az utolsó telket. \nAz utolsó telek házszáma: ${houseNumber} \n`;
     }
 
     constructor(forrás: string) {
@@ -59,3 +47,5 @@ export default class Solution {
         });
     }
 }
+
+module.exports = Solution;
