@@ -30,9 +30,8 @@ export default function content(req: http.IncomingMessage, res: http.ServerRespo
 
     res.write(`3. feladat: \n ${su.LastSoldSideSite} \n`);
 
-    const oneSiteNumber = su.oneSiteNumber;
-
-    res.write(`4. feladat: \n A szomszédossal egyezik a kerítés színe: ${oneSiteNumber}\n \n`);
+    const oneSite = su.oneSiteNumber;
+    res.write(`4. feladat: \nA szomszédossal egyezik a kerítés színe: ${oneSite}\n`);
 
     res.write("</pre></form></body></html>");
     res.end();
