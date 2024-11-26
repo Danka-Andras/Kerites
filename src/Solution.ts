@@ -27,6 +27,27 @@ export default class Solution {
         return -1;
     }
 
+    get LastSoldSideSite() {
+        // Az utolsó eladott telek
+        const lastSite = this.#utca[this.#utca.length - 1];
+
+        // Oldal meghatározása (páros / páratlan)
+        const side = lastSite.parosparatlan === 0 ? "páros" : "páratlan";
+
+        // Házszám kiszámítása
+        let houseNumber = 0;
+        if (lastSite.parosparatlan === 0) {
+            // Páros oldalon: 2, 4, 6, ...
+            houseNumber = 2 * this.#utca.filter(site => site.parosparatlan === 0).length;
+        } else {
+            // Páratlan oldalon: 1, 3, 5, ...
+            houseNumber = 2 * this.#utca.filter(site => site.parosparatlan === 1).length - 1;
+        }
+
+        // Visszatérés a kívánt formátumban
+        return `A ${side} oldalon adták el az utolsó telket. \nAz utolsó telek házszáma: ${houseNumber} \n`;
+    }
+
     constructor(forrás: string) {
         const sorok = fs.readFileSync(forrás, "utf-8").split("\n");
         sorok.forEach(sor => {
